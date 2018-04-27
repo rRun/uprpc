@@ -1,6 +1,8 @@
 package com.fortis.uprpc.model;
 
-public class InvokerService {
+import java.io.Serializable;
+
+public class InvokerService implements Serializable {
   private Class serviceItf;
 
 

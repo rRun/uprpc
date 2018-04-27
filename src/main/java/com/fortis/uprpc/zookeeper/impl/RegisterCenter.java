@@ -133,9 +133,9 @@ public class RegisterCenter implements IRegisterCenter4Provider,IRegisterCenter4
   }
 
   @Override
-  public void initProviderMap() {
+  public void initProviderMap(String remmoteKey, String groupName) {
     if (MapUtils.isEmpty(serviceMetaDataMap4Consume)){
-      serviceMetaDataMap4Consume.putAll(fetchOrUpdateServiceMetaData());
+      serviceMetaDataMap4Consume.putAll(fetchOrUpdateServiceMetaData(remmoteKey,groupName));
     }
   }
 
@@ -207,7 +207,7 @@ public class RegisterCenter implements IRegisterCenter4Provider,IRegisterCenter4
     providerServiceMap.putAll(currentServiceMetaDataMap);
   }
 
-  private Map<String,List<ProviderService>> fetchOrUpdateServiceMetaData(){
+  private Map<String,List<ProviderService>> fetchOrUpdateServiceMetaData(String remmoteKey, String groupName){
     final Map<String,List<ProviderService>> providerServiceMap = Maps.newConcurrentMap();
     //连接zk
     synchronized (RegisterCenter.class){
@@ -217,7 +217,7 @@ public class RegisterCenter implements IRegisterCenter4Provider,IRegisterCenter4
     }
 
     //获取服务提供者列表
-    String providerPath = ROOT_PATH;
+    String providerPath = ROOT_PATH + "/" + remmoteKey + "/" + groupName;
     List<String> providerServices = zkClient.getChildren(providerPath);
     for (String serviceName : providerServices){
       String servicePath = providerPath + "/" + serviceName + PROVIDER_TYPE;

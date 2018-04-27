@@ -1,8 +1,9 @@
 package com.fortis.uprpc.model;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 
-public class ProviderService {
+public class ProviderService implements Serializable{
 
   //IP和端口
   private int serverPort;
@@ -104,5 +105,20 @@ public class ProviderService {
 
   public void setWeight(int weight) {
     this.weight = weight;
+  }
+
+  public ProviderService copy() {
+    ProviderService providerService = new ProviderService();
+    providerService.setServiceItf(this.getServiceItf());
+    providerService.setServiceObject(this.getServiceObject());
+    providerService.setServiceMethod(this.getServiceMethod());
+    providerService.setServerIp(this.getServerIp());
+    providerService.setServerPort(this.getServerPort());
+    providerService.setTimeout(this.getTimeout());
+    providerService.setWeight(this.getWeight());
+    providerService.setWorkThreads(this.getWorkThreads());
+    providerService.setAppKey(this.getAppKey());
+    providerService.setGroupName(this.getGroupName());
+    return providerService;
   }
 }

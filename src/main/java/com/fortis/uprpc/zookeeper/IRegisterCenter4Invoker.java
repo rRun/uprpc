@@ -11,7 +11,7 @@ public interface IRegisterCenter4Invoker {
   /**
    * 消费端初始化服务提供者信息的本地信息
    */
-  void initProviderMap();
+  void initProviderMap(String remmoteKey,String groupName);
 
   /**
    * 消费端获取服务提供者信息

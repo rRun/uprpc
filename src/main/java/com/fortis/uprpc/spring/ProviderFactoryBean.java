@@ -23,7 +23,7 @@ public class ProviderFactoryBean implements FactoryBean,InitializingBean{
   private String servicePort;
   //服务超时时间
   private long timeout;
-  //服务代理对象，TODO:暂时未使用
+  //服务代理对象
   private Object serviceProxyObject;
   //服务提供者唯一的标示
   private String appKey;

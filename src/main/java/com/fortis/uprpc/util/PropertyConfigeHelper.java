@@ -19,4 +19,8 @@ public class PropertyConfigeHelper {
     return SerializeType.DefaultJavaSerializer;
   }
 
+  public static int getChannelConnectSize(){
+    return 0;
+  }
+
 }
