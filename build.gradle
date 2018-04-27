@@ -1,0 +1,40 @@
+group 'com.fortis'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    //netty
+    compile 'io.netty:netty-all:4.0.10.Final'
+
+    //zookeeper
+    compile 'com.github.sgroschupf:zkclient:0.1'
+    compile "org.apache.zookeeper:zookeeper:3.4.8"
+
+    //spring
+    def springVersion='4.3.8.RELEASE'
+    compile(
+            "org.springframework:spring-beans: $springVersion",
+            "org.springframework:spring-context-support:$springVersion",
+            "org.springframework:spring-aop:$springVersion",
+            "org.springframework:spring-context:$springVersion"
+            //"org.springframework:spring-web:$springVersion",
+            //"org.springframework:spring-webmvc:$springVersion",
+            //"org.springframework:spring-tx:$springVersion",
+            //"org.springframework:spring-jdbc:$springVersion",
+            //"org.springframework:spring-test:$springVersion",
+    )
+
+    //common
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
+    compile 'com.google.guava:guava:16.0.1'
+}
