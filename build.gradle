@@ -2,6 +2,7 @@ group 'com.fortis'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 
@@ -37,4 +38,28 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
     compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
     compile 'com.google.guava:guava:16.0.1'
+}
+
+// 指定上传的路径
+def localMavenRepo = 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
+
+uploadArchives{
+    repositories{
+        mavenDeployer{
+
+
+            //指定项目部署到的中央库地址，UserName和Password就是Part 1中注册的账号。
+            repository(url: "http://172.20.2.222:8081/repository/maven-releases/") {
+                authentication(userName: "admin", password: "admin")
+            }
+            snapshotRepository(url: "http://172.20.2.222:8081/repository/maven-snapshots/"){
+                authentication(userName: "admin", password: "admin")
+            }
+            //构造项目的Pom文件，参见Part 2中Pom文件的规范，不要遗漏必填项
+            pom.project {
+                name project.name
+                packaging 'jar'
+            }
+        }
+        }
 }
