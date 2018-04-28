@@ -1,2 +1,2 @@
-http\://www.fortis.com/schema/remote-service=com.fortis.uprpc.spring.parser.UpRemoteServiceNamespaceHandler
-http\://www.fortis.com/schema/remote-reference=com.fortis.uprpc.spring.parser.UpRemoteReferenceNamespaceHandler
+http\://www.fortis.com/schema/up-service=com.fortis.uprpc.spring.parser.UpRemoteServiceNamespaceHandler
+http\://www.fortis.com/schema/up-reference=com.fortis.uprpc.spring.parser.UpRemoteReferenceNamespaceHandler

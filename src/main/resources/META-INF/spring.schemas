@@ -1,2 +1,2 @@
-http\://www.fortis.com/schema/remote-service=META-INF/remote-service.xsd
-http\://www.fortis.com/schema/remote-reference=META-INF/remote-reference.xsd
+http\://www.fortis.com/schema/up-service.xsd=META-INF/remote-service.xsd
+http\://www.fortis.com/schema/up-reference.xsd=META-INF/remote-reference.xsd

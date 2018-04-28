@@ -20,7 +20,7 @@ public class ProviderFactoryBean implements FactoryBean,InitializingBean{
   //服务实现
   private Object serviceObject;
   //服务端口
-  private String servicePort;
+  private String serverPort;
   //服务超时时间
   private long timeout;
   //服务代理对象
@@ -53,7 +53,7 @@ public class ProviderFactoryBean implements FactoryBean,InitializingBean{
   @Override
   public void afterPropertiesSet() throws Exception {
     //启动netty服务器
-    NettyServer.singleton().start(Integer.parseInt(servicePort));
+    NettyServer.singleton().start(Integer.parseInt(serverPort));
     //注册到zookeeper,元数据注册中心
     List<ProviderService> providerServiceList = buildProviderServiceInfos();
     IRegisterCenter4Provider registerCenter4Provider = RegisterCenter.singleton();
@@ -68,7 +68,7 @@ public class ProviderFactoryBean implements FactoryBean,InitializingBean{
       providerService.setServiceItf(serviceItf);
       providerService.setServiceObject(serviceObject);
       providerService.setServerIp(IPHelper.localIp());
-      providerService.setServerPort(Integer.parseInt(servicePort));
+      providerService.setServerPort(Integer.parseInt(serverPort));
       providerService.setAppKey(appKey);
       providerService.setServiceMethod(method);
       providerService.setGroupName(groupName);
@@ -97,12 +97,12 @@ public class ProviderFactoryBean implements FactoryBean,InitializingBean{
     this.serviceObject = serviceObject;
   }
 
-  public String getServicePort() {
-    return servicePort;
+  public String getServerPort() {
+    return serverPort;
   }
 
-  public void setServicePort(String servicePort) {
-    this.servicePort = servicePort;
+  public void setServerPort(String servicePort) {
+    this.serverPort = servicePort;
   }
 
   public long getTimeout() {
